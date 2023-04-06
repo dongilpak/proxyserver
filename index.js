@@ -7,9 +7,10 @@ app.use(cors());
 
 const port = 8000;
 
-app.get('/result', async (req, res) => {
+app.get('/result/:updateNum', async (req, res) => {
+    const updateNum = req.params.updateNum;
     const resp = await fetch(
-        'https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=1061'
+        `https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${updateNum}`
     );
 
     const data = await resp.json();
